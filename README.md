@@ -21,7 +21,7 @@ Follow the detailed steps [below](#guide) to start your own project. It should w
 * Install Python
 
 ## Flask Setup
-1. Create new project directory
+1. From the terimal, create a new directory for the project
 ```
 mkdir flask-react-starter
 ```
