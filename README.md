@@ -45,16 +45,42 @@ source env/bin/activate
 ```
 
 Notes:
-- Don't forget to add env to .gitignore.
+- Don't forget to add `env` to `.gitignore`.
 - `deactivate` to exit venv
 - `pip3 freeze` checks for installed packages in virtual environment
 - `pip3 freeze > requirements.txt` creates requirements file
 - `pip3 install -r requirements.txt` install packages from requirements.txt
 
-4. Create core directory with init and views files
+4. From /server, create /core with \_\_init\_\_.py and views.py
 ```
 mkdir core
 cd core
 touch __init__.py
 touch views.py
+```
+
+5. from /core, create config.py and add contents
+`touch config.py`
+
+config.py
+```py
+# config.py is used in ./core/__init__.py for Flask()
+import os
+
+class Config():
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'postgresql:///flask_react_starter'
+    SQLALCHEMY_ECHO = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SESSION_TYPE = 'filesystem'
+    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
+```
+
+5. init.py
+```py
+from flask import Flask
+from config import Config
 ```
