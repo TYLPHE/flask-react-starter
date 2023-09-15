@@ -36,3 +36,25 @@ cd flask-react-starter
 ```
 mkdir client server
 ```
+
+3. Enter Server and create virtual environment
+```
+cd server
+python3 -m venv env
+source env/bin/activate
+```
+
+Notes:
+- Don't forget to add env to .gitignore.
+- `deactivate` to exit venv
+- `pip3 freeze` checks for installed packages in virtual environment
+- `pip3 freeze > requirements.txt` creates requirements file
+- `pip3 install -r requirements.txt` install packages from requirements.txt
+
+4. Create core directory with init and views files
+```
+mkdir core
+cd core
+touch __init__.py
+touch views.py
+```
