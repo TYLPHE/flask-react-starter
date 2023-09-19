@@ -45,7 +45,7 @@ source env/bin/activate
 ```
 
 Notes:
-- Don't forget to add `env` to `.gitignore`.
+- Don't forget to add `env` and `__pycache__` to `.gitignore`.
 - `deactivate` to exit venv
 - `pip3 freeze` checks for installed packages in virtual environment
 - `pip3 freeze > requirements.txt` creates requirements file
@@ -59,7 +59,7 @@ touch __init__.py
 touch views.py
 ```
 
-5. from /core, create config.py and add contents
+5. from /server, create config.py and add contents
 `touch config.py`
 
 config.py
@@ -79,7 +79,7 @@ class Config():
     SESSION_COOKIE_SAMESITE = 'Lax'
 ```
 
-5. init.py
+6. init.py
 ```py
 from flask import Flask
 from config import Config
@@ -93,6 +93,8 @@ app.app_context().push()
 db = SQLAlchemy(app)
 Session(app)
 CORS(app)
+
+from core import views
 ```
 \_\_init\_\_.py in a folder will make it a regular package. The code inside \_\_init\_\_.py will run when it is imported. In this case we want to import Flask and run it with configuration set by us.
 
@@ -109,3 +111,34 @@ Notes:
 `config.from_object()` sets config defaults
 `app.app_context().push()` fixes 'Working outside of application context' error.
 
+7. views.py
+```py
+from core import app
+
+@app.route('/')
+def index():
+    return 'Hello world'
+```
+Tests to see if we set up server correctly. 'Hello world' should appear in the browser.
+
+8. From /server create base.py and insert:
+```py
+from core import app
+```
+This allows us to use `run flask` from the terminal. The command will read the base.py file
+
+9. From the terminal, type `export FLASK_APP=base.py`
+
+This will create an exported variable in the env.
+
+Note: type `env` to see all environment variables, including the ones we exported (the FLASK_APP one).
+
+10. From the terminal, `run flask`
+
+We should see something like, 
+
+`* Running on http://127.0.0.1:5000`. 
+
+Opening this link should return 'Hello World'
+
+Note: We can also use `localhost:5000/`.
