@@ -83,4 +83,29 @@ class Config():
 ```py
 from flask import Flask
 from config import Config
+from flask_sqlalchemy import SQLAlchemy
+from flask_session import Session
+from flask_cors import CORS
+
+app = Flask(__name__)
+app.config.from_object(Config)
+app.app_context().push()
+db = SQLAlchemy(app)
+Session(app)
+CORS(app)
 ```
+\_\_init\_\_.py in a folder will make it a regular package. The code inside \_\_init\_\_.py will run when it is imported. In this case we want to import Flask and run it with configuration set by us.
+
+`flask_session` allows us to use server-side sessions. This allows us to have pages unique to the user like logging in and having a user home page.
+
+`flask_cors` handles Cross Origin Resource Sharing(CORS), making cross-origin AJAX possible. from [this link](https://hackernoon.com/understanding-cors-why-its-important-and-how-it-works),
+* It allows browsers to enforce the same-origin policy, which is a security measure that prevents a malicious script from accessing resources that it should not have access.
+* It allows restricted resources on a web page to be requested from another domain. This can be useful when you want to embed a resource from another domain, such as an image or a video.
+* It allows the browser to send a pre-flighted request to the server to check if the request is allowed. This can be useful when you want to make a request that could potentially cause a change in state on the server.
+
+`flask_sqlalchemy` is an extension for Flask that adds support for SQLAlchemy. This sets up common objects and patterns for using those objects, such as  session tied to each web request, models, and engines.
+
+Notes:
+`config.from_object()` sets config defaults
+`app.app_context().push()` fixes 'Working outside of application context' error.
+

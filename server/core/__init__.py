@@ -10,5 +10,3 @@ app.app_context().push()
 db = SQLAlchemy(app)
 Session(app)
 CORS(app)
-
-from core import views
