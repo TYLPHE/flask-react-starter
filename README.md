@@ -133,8 +133,8 @@ This will create an exported variable in the env.
 
 Note: type `env` to see all environment variables, including the ones we exported (the FLASK_APP one).
 
-10. From the terminal, `run flask`
-
+10. From the terminal, `flask run`
+ 
 We should see something like, 
 
 `* Running on http://127.0.0.1:5000`. 
@@ -142,3 +142,9 @@ We should see something like,
 Opening this link should return 'Hello World'
 
 Note: We can also use `localhost:5000/`.
+
+Whenever we want to run flask in a new terminal we would always need to run the following in the root directory (for this project, it's from the /server directory)...
+```
+source env/bin/activate
+export FLASK_APP=base.py
+```
