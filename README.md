@@ -19,6 +19,7 @@ Follow the detailed steps [below](#guide) to start your own project. It should w
 # Guide
 ###### Prerequisites
 * Install Python
+* Install Node
 
 ## Flask Setup
 1. Create a repo on GitHub and clone it.
@@ -164,10 +165,19 @@ source env/bin/activate
 export FLASK_APP=base.py
 ```
 
-## Helpful Links
-Some helpful links for new projects
+## React
+We will install React in the /client directory and connect it with Flask in the /server directory. We will use server oriented commands like `flask run` in one terminal. The client commands will be in another terminal, like `npm start`.
 
-### Missing Imports
+1. In a new terminal, access the /client directory, and type `npx create-react-app flask-react-starter`
+
+Note: Add `node_modules` to .gitignore on the root level.
+
+2. 
+
+## Helpful Knowledge
+Some helpful tips I resolved while working on this project.
+
+### Missing imports
 When not in a virtual environment, typing `which python` (mac) will show a default location, ex `/usr/bin/python3`.
 
 After activating the virtual environment with `source env/bin/activate/`, `which python` shows a different location. My location was, `/Users/tylphe/projects/flask-react-starter/server/env/bin/python3`. Copy this location and then press `F1` in VSCode and find `Python: Select interpreter` and set the new default path.
