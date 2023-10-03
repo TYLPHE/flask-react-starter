@@ -44,6 +44,17 @@ python3 -m venv env
 source env/bin/activate
 ```
 
+Make sure env is activated before installing packages
+ex. `(env) username@cpuname server %  `
+
+```
+pip3 install flask
+pip3 install flask-sqlalchemy
+pip3 install flask-session
+pip3 install flask-cors
+pip3 install psycopg2-binary
+```
+
 Notes:
 - Don't forget to add `env` and `__pycache__` to `.gitignore`.
 - `deactivate` to exit venv
@@ -106,6 +117,10 @@ from core import views
 * It allows the browser to send a pre-flighted request to the server to check if the request is allowed. This can be useful when you want to make a request that could potentially cause a change in state on the server.
 
 `flask_sqlalchemy` is an extension for Flask that adds support for SQLAlchemy. This sets up common objects and patterns for using those objects, such as  session tied to each web request, models, and engines.
+
+`psycopg2-binary` is an error that appears if not installed. It is a PostgreSQL database adapter for Python. Psycopg2 requires a few prerequisites like a C compiler and development packages and recommended for production. There's a stand-alone package psycopg2-binary for development.
+
+After research, I learned that the binary version is unreliable in multithread environments.
 
 Notes:
 `config.from_object()` sets config defaults
