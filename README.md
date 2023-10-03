@@ -56,7 +56,7 @@ pip3 install psycopg2-binary
 ```
 
 Notes:
-- Don't forget to add `env` and `__pycache__` to `.gitignore`.
+- Don't forget to add `env`, `__pycache__`, and `flask_session` to `.gitignore`.
 - `deactivate` to exit venv
 - `pip3 freeze` checks for installed packages in virtual environment
 - `pip3 freeze > requirements.txt` creates requirements file
