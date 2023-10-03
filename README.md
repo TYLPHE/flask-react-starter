@@ -163,3 +163,11 @@ Whenever we want to run flask in a new terminal we would always need to run the 
 source env/bin/activate
 export FLASK_APP=base.py
 ```
+
+## Helpful Links
+Some helpful links for new projects
+
+### Missing Imports
+When not in a virtual environment, typing `which python` (mac) will show a default location, ex `/usr/bin/python3`.
+
+After activating the virtual environment with `source env/bin/activate/`, `which python` shows a different location. My location was, `/Users/tylphe/projects/flask-react-starter/server/env/bin/python3`. Copy this location and then press `F1` in VSCode and find `Python: Select interpreter` and set the new default path.
