@@ -165,6 +165,18 @@ source env/bin/activate
 export FLASK_APP=base.py
 ```
 
+11. To avoid having to type `export FLASK_APP=base.py` each time a new terminal is opened, we can install python-dotenv to set the environment variables everytime `flask run` is used.
+
+From the terminal:
+
+`pip3 install python-dotenv`
+
+From /server, create a a `.flaskenv` file and enter the following lines into the file:
+```
+FLASK_APP=base.py
+FLASK_ENV=development
+```
+
 ## React
 We will install React in the /client directory and connect it with Flask in the /server directory. We will use server oriented commands like `flask run` in one terminal. The client commands will be in another terminal, like `npm start`.
 
@@ -172,7 +184,14 @@ We will install React in the /client directory and connect it with Flask in the 
 
 Note: Add `node_modules` to .gitignore on the root level.
 
-2. 
+2. From /client/flask-react-starter/package.json, add the proxy line:
+```
+"name": "flask-react-starter",
+"version": "0.1.0",
+"private": true,
+"proxy":"http://localhost:5000",
+```
+
 
 ## Helpful Knowledge
 Some helpful tips I resolved while working on this project.
