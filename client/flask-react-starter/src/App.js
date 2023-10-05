@@ -4,10 +4,14 @@ import { useEffect } from 'react'
 
 function App() {
   useEffect(() => {
-    fetch('/test')
-    .then(response => response.json())
-    .then(data => console.log(data))
-  })
+    async function testConnection() {
+      const req = await fetch('/test');
+      const res = await req.json(req);
+      console.log(res);
+      return;
+    }
+    testConnection();
+  });
   
   return (
     <div className="App">

@@ -177,7 +177,7 @@ FLASK_APP=base.py
 FLASK_ENV=development
 ```
 
-## React
+## React Setup
 We will install React in the /client directory and connect it with Flask in the /server directory. We will use server oriented commands like `flask run` in one terminal. The client commands will be in another terminal, like `npm start`.
 
 1. In a new terminal, access the /client directory, and type `npx create-react-app flask-react-starter`
@@ -192,6 +192,37 @@ Note: Add `node_modules` to .gitignore on the root level.
 "proxy":"http://localhost:5000",
 ```
 
+## Check if Flask and React communicate
+1. From views.py, add the following lines:
+```py
+@app.route('/test')
+def test():
+    return {
+        "msg": "hello"
+    }, 200
+```
+
+Save and reset server.
+
+2. From App.js, add a useEffect() to `App()` fetch data from the server:
+```js
+import { useEffect } from 'react'
+
+useEffect(() => {
+    async function testConnection(){
+        const req = await fetch('/test');
+        const res = await req.json(req);
+        console.log(res);
+        return;
+    }
+    testConnection();
+})
+```
+
+I decided to test with useEffect so we can immediately check the browser's console right when the page loads. Running the server with `flask run` and `npm start` in another terminal should have the following message in the console:
+```
+Object { msg: "Hello" }
+```
 
 ## Helpful Knowledge
 Some helpful tips I resolved while working on this project.

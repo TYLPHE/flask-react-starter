@@ -8,7 +8,7 @@ def index():
 def test():
     return {
         "msg": 'Hello'
-    }
+    }, 200
 
 @app.route('/profile')
 def profile():
