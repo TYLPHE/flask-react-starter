@@ -6,8 +6,13 @@ function App() {
   useEffect(() => {
     async function testConnection() {
       const req = await fetch('/test');
-      const res = await req.json(req);
-      console.log(res);
+      console.log('pre', req)
+      if (req.ok){
+        const res = await req.json(req);
+        console.log(res);
+      } else {
+        console.log('error', req);
+      }
       return;
     }
     testConnection();

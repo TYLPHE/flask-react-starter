@@ -189,8 +189,10 @@ Note: Add `node_modules` to .gitignore on the root level.
 "name": "flask-react-starter",
 "version": "0.1.0",
 "private": true,
-"proxy":"http://localhost:5000",
+"proxy":"http://127.0.0.1:5000",
 ```
+
+Note: I used 127.0.0.1 instead of localhost. I read that localhost does not work and is a mac thing.
 
 ## Check if Flask and React communicate
 1. From views.py, add the following lines:
